@@ -57,3 +57,17 @@ def vaca(sueldom,m):    #para costo laboral y liquidacion
 def CTS(sueldom,m):        #para costo
     cts = ((sueldom+(sueldom+sueldom*0.09)/6)/12)*m
     return cts
+
+def CTS_trunca(sueldom,mes_i,mes_f):     #para liquidacion
+    b=0
+    if (11<=mes_f<=12 or 1<=mes_f<=4) and 5<=mes_i<=10:
+        b = (mes_f-11)+1
+    elif (11<=mes_i<=12 or 1<=mes_i<=4) and 5<=mes_f<=10:
+        b = (mes_f-5)+1
+    elif (11<=mes_f<=12 or 1<=mes_f<=4) and (11<=mes_i<=12 or 1<=mes_i<=4):
+        b = (mes_f-mes_i)+1
+    elif 5<=mes_i<=10 and 5<=mes_f<=10:
+        b = (mes_f-mes_i)+1
+    
+    ctstrunca = ((sueldom+(sueldom+sueldom*0.09)/6)/12)*b
+    return ctstrunca
