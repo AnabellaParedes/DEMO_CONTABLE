@@ -28,3 +28,7 @@ def conteo_meses(iniciomes,finmes,inicioanio,finalanio):
 def grati(sueldom,m):   #para costo laboral
     g = (sueldom/6)*(m)
     return g
+
+def bono(gratificacion):   #para costo y liquidacion
+    bono = gratificacion*0.09
+    return bono
