@@ -101,3 +101,8 @@ def AFP(sueldom,porc):
     porc = porc/100
     AFP = sueldom*porc
     return AFP
+
+def ESSALUD(sueldom,m):       #para costo laboral
+    porc_estado = 0.09
+    essalud = (sueldom*m)*porc_estado
+    return essalud
