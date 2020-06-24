@@ -24,3 +24,7 @@ def conteo_meses(iniciomes,finmes,inicioanio,finalanio):
     else:
         m=12-mes_i+mes_f+1
     return m
+
+def grati(sueldom,m):   #para costo laboral
+    g = (sueldom/6)*(m)
+    return g
