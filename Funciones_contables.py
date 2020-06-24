@@ -53,3 +53,7 @@ def grati_trunca(sueldom,mes_i,mes_f):   #para liquidacion
 def vaca(sueldom,m):    #para costo laboral y liquidacion
     vt = (sueldom/12)*(m)
     return vt
+
+def CTS(sueldom,m):        #para costo
+    cts = ((sueldom+(sueldom+sueldom*0.09)/6)/12)*m
+    return cts
