@@ -71,3 +71,28 @@ def CTS_trunca(sueldom,mes_i,mes_f):     #para liquidacion
     
     ctstrunca = ((sueldom+(sueldom+sueldom*0.09)/6)/12)*b
     return ctstrunca
+
+def i_5c(sueldom,bono_ord):     #para remuneracion neta
+    s = sueldom*12
+    grati = sueldom*2
+    bono = grati*0.09
+    proyeccion_1anio = s+grati+bono+bono_ord
+    renta_neta = proyeccion_1anio-30100      #se le resta 7UIT(UIT=4300soles)
+    #tasas de impuesto
+    i = renta_neta/4300
+    if i>0 and i<=5:
+        i_5c = (renta_neta*0.08)/12
+    elif i>5 and i<=20:
+        a = 21500
+        i_5c = (1720+(renta_neta-a)*0.14)/12
+    elif i>20 and i<=35:
+        a = 86000
+        i_5c = (10750+(renta_neta-a)*0.17)/12
+    elif i>35 and i<=45:
+        a = 150500
+        i_5c = (21715+(renta_neta-a)*0.2)/12
+    elif i>45:
+        a = 193500
+        i_5c = (30315+(renta_neta-a)*0.3)/12
+    
+    return round(i_5c,2)
