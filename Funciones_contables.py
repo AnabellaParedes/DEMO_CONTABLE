@@ -96,3 +96,8 @@ def i_5c(sueldom,bono_ord):     #para remuneracion neta
         i_5c = (30315+(renta_neta-a)*0.3)/12
     
     return round(i_5c,2)
+
+def AFP(sueldom,porc):
+    porc = porc/100
+    AFP = sueldom*porc
+    return AFP
