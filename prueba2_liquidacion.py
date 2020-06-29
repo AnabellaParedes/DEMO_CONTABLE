@@ -24,9 +24,9 @@ while True:
         break
 meses = funciones4final.conteo_meses(fecha_inicio_mes,fecha_salida_mes,fecha_inicio_anio,fecha_salida_anio)
 vacaciones = funciones4final.vaca(sueldo,meses)
-grati_trunca = funciones4final.grati_trunca(sueldo,fecha_inicio_mes,fecha_salida_mes)
+grati_trunca = funciones4final.grati_trunca(sueldo,fecha_inicio_mes,fecha_salida_mes,fecha_inicio_anio,fecha_salida_anio)
 bono_ley = funciones4final.bono(grati_trunca)
-cts_trunca = funciones4final.CTS_trunca(sueldo,fecha_inicio_mes,fecha_salida_mes)
+cts_trunca = funciones4final.CTS_trunca(sueldo,fecha_inicio_mes,fecha_salida_mes,fecha_inicio_anio,fecha_salida_anio)
 
 liquidacion = vacaciones+grati_trunca+bono_ley+cts_trunca
 
