@@ -12,7 +12,7 @@ class Aplicacion():
         #variables de control
         self.nombre = StringVar()
         self.SueldoMensual = IntVar(value=0) 
-        self.SistemaPensiones = StringVar()   #value = 'a'
+        self.SistemaPensiones = StringVar() 
         self.porcentaje = DoubleVar()
         self.total = StringVar()
         
@@ -49,13 +49,14 @@ class Aplicacion():
 
         self.separ1 = ttk.Separator(self.NETO, orient=HORIZONTAL)
         
+        #botones a utilizar
         self.boton1 = ttk.Button(self.NETO, text="Calcular", command=self.calcular)
         self.boton3 = ttk.Button(self.NETO, text="Info", command=self.Informacion)
         self.boton4 = ttk.Button(self.NETO, text="Borrar", command=self.Borrar)
         self.boton2 = ttk.Button(self.NETO, text="Salir", command=self.NETO.destroy)
         
 
-        #anadiendo
+        #anadiendo y posicionando todas las etiquetas y cajas de textos que se utilicen
         self.imagen1.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=5)
         self.etiq1.pack(side=TOP, fill=BOTH, expand=True, padx=10, pady=5)
         self.n.pack(side=TOP, fill=X, expand=True, padx=20, pady=5)
@@ -99,17 +100,16 @@ class Aplicacion():
             error_dato = True
 
         if not error_dato and sueldo>0:
-            #if sueldo>2150:
-            if self.SistemaPensiones.get() == "a":
-                if porcentaje<11:
+            if self.SistemaPensiones.get() == "a":     #Si es que elige AFP
+                if porcentaje<11:                      #Validar tasa minima
                     self.total.set("RECORDAR. La tasa minima para el AFP es 11%")
                 else:
                     total = sueldo - AFP - quinta
                     texto = f"Estimado Sr(a) {nombre} \nDe acuerdo a su remuneracion neta, usted cuenta con los siguientes descuentos: \n\tDescuento por AFP de S/.{AFP} \n\tDescuento por renta de 5ta categoria de S/.{quinta} \nSu Remuneracion neta mensual es {total}"
                     self.total.set(texto) 
 
-            elif self.SistemaPensiones.get() == "o":
-                if porcentaje != 13:
+            elif self.SistemaPensiones.get() == "o":    #Si es que elige ONP
+                if porcentaje != 13:                    #Validar tasa estipulada
                     self.total.set("ERROR. La tasa para la ONP es 13%")
                 else:
                     onp = sueldo*0.13
@@ -123,10 +123,10 @@ class Aplicacion():
         else:
             self.total.set("ERROR-----------------------------------------------------------------------------")
 
-    def Informacion(self):
+    def Informacion(self):    #si necesita informacion
         messagebox.showinfo("Recuerde...", "<1> El valor de la tasa de la ONP es 13% \n<2> Si tiene un sueldo menor a 2150 no paga Impuesto de 5ta categoria \n<3> La tasa minima del AFP es 11%")
     
-    def Borrar(self):
+    def Borrar(self):         #borrar e ingresar nuevos datos
         self.nombre.set("")
         self.SueldoMensual.set("")
         self.porcentaje.delete(0,END)
