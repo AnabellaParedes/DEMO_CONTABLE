@@ -100,7 +100,6 @@ class Aplicacion():
 
         if not error_dato and sueldo>0:
             #if sueldo>2150:
-            self.total.set("")
             if self.SistemaPensiones.get() == "a":
                 if porcentaje<11:
                     self.total.set("RECORDAR. La tasa minima para el AFP es 11%")

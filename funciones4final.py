@@ -50,20 +50,20 @@ def grati_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):   #para liquidacion
     #Desde julio y noviembre, se cobra el 15 de diciembre
     #Puede que a la persona le toque cobrar solo lo que trabajo despues de una fecha de pago, 
     #o cobrar una gratificación completa si e
-    if mes_f==12 or mes_i==12:
+    if mes_f==12 or mes_i==12:     #se valida hasta el mes de noviembre
         mes_f = mes_f-1
         mes_i = mes_i-1
     a=0
-    if anio_i<anio_f:              
-        if 1<=mes_f<=6 and 6<mes_i<=11:
-            a = mes_f
+    if anio_i<anio_f:              #si es año final es mayor
+        if 1<=mes_f<=6 and 6<mes_i<=11:          #los numeros representan los meses
+            a = mes_f                            #ejemplo: 1 igual a enero
         elif 1<=mes_f<=6 and 1<=mes_i<=6:
             a = mes_f
         elif 6<=mes_f<=11 and 6<=mes_i<=11:
             a = mes_f-6
         elif 1<=mes_i<=6 and 6<mes_f<=11:
             a = mes_f-6
-    elif anio_f==anio_i:
+    elif anio_f==anio_i:           #si sucede en el mismo año
         if 1<=mes_f<=6 and 1<=mes_i<=6:
             a = mes_f-mes_i+1
         elif 6<=mes_f<=11 and 6<=mes_i<=11: 
@@ -77,14 +77,20 @@ def grati_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):   #para liquidacion
     return gratitrunca 
 
 def vaca(sueldom,m):    #para costo laboral y liquidacion
+    #Para calcular el monto de las vacaciones que te correponden en pago
+    #Equivale a un doceavo del sueldo mensual por los meses que se trabaje
     vt = (sueldom/12)*(m)
     return vt
 
 def CTS(sueldom,m):        #para costo
+    #Por ser usado para calcular el costo de contratar recien a una persona, no se consideran los parametros
+    #de pago. Entonces se calcularia con respecto al tiempo que diraria el contrato "m"
+    #Equivale a un sueldo mas un sexto de la gratificacion, entre 12
     cts = ((sueldom+(sueldom+sueldom*0.09)/6)/12)*m
     return cts
 
 def CTS_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):     #para liquidacion
+    #Corresponde 
     b=0
     if anio_i<anio_f:
         if 1<=mes_f<=4 and 5<=mes_i<=10:    #if (11<=mes_f<=12 or 1<=mes_f<=4) and 5<=mes_i<=10:

@@ -7,7 +7,7 @@ class Aplicacion_1():
     def __init__(self):
         self.LIQ = Tk()
         self.LIQ.title("LIQUIDACION")
-        self.LIQ.geometry("440x680")
+        self.LIQ.geometry("440x700")
         self.LIQ.resizable(0,0)
 
         #variables de control
