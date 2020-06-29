@@ -46,6 +46,7 @@ class Aplicacion_2():
         self.etiq9 = ttk.Label(self.C, text="RESULTADOS")
         self.etiq10 = ttk.Label(self.C, textvariable=self.total, foreground="yellow", background="black", borderwidth=5, relief="sunken", anchor="e")
 
+        #Botones a usar
         self.boton1 = ttk.Button(self.C, text="Calcular", command=self.calcular2)  #
         #self.boton3 = ttk.Button(self.LIQ, text="Info")   #, command=self.Informacion
         self.boton4 = ttk.Button(self.C, text="Borrar", command=self.Borrar) #
@@ -75,16 +76,15 @@ class Aplicacion_2():
         self.etiq9.grid(row=14, column=0, columnspan=4, padx=10, pady=10)
         self.etiq10.grid(row=15, column=0, columnspan=3, rowspan=14, sticky=W+E+N+S, padx=5, pady=5, ipadx=10, ipady=20)
 
-        #self.separ1.grid(row=39, column=0, columnspan=2)
-        
-        #self.boton3.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
+    
         self.boton2.grid(row=45, column=1, padx=5, pady=5)
         self.boton4.grid(row=45, column=0, padx=5, pady=5)
+
         #ventana abierta
         self.C.mainloop()
 
     def calcular2(self, *args):
-        #Función para validar datos y calcular el sueldo neto
+        #Función para validar datos y calcular el costo laboral
         error_dato = False
         total = 0
         try:
@@ -100,7 +100,7 @@ class Aplicacion_2():
             error_dato = True
         
         if not error_dato and sueldo>0:
-            self.total.set("                                                                    ")
+            
             if meses==0:
                 self.total.set("Aun no hacemos viajes en el tiempo                                                                    ")
             else:
