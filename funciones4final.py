@@ -17,12 +17,16 @@ def conteo_meses(iniciomes,finmes,inicioanio,finalanio):
     #total num de meses
     if mes_f>=mes_i:
         if anio_f==anio_i:
-            m=(mes_f-mes_i)+1
-            
+            m=(mes_f-mes_i)+1   
         elif anio_f>anio_i:
-            m=(mes_f-mes_i)+12*(anio_f-anio_i)+1
+            m=(12-mes_i+mes_f+1)+12*(anio_f-anio_i-1)
+        else:
+            m=0
     else:
-        m=12-mes_i+mes_f+1
+        if anio_f>anio_i:
+            m=(12-mes_i+mes_f+1)+12*(anio_f-anio_i-1)
+        else:
+            m=0
     return m
 
 def grati(sueldom,m):   #para costo laboral
