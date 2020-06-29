@@ -130,7 +130,8 @@ class Aplicacion():
     def Borrar(self):
         self.nombre.set("")
         self.SueldoMensual.set("")
-        self.porcentaje.set("")
+        self.porcentaje.delete(0,END)
+        self.total.set("")
 
 def main():
     Aplicacion()

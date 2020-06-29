@@ -38,16 +38,23 @@ def grati(sueldom,m):   #para costo laboral
     g = (sueldom/6)*(m)
     return g
 
-def bono(gratificacion):   #para costo y liquidacion
+def bono(gratificacion):   #para costo laboral y liquidacion
+    #El bono ley siempre será el 9% de la gratificacion otorgada
     bono = gratificacion*0.09
     return bono
 
 def grati_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):   #para liquidacion
+    #Esto corresponde al calculo de el monto que le faltaria cobrar al empleado luego de su renuncia
+    #Esta evaluado con respecto a las fechas de pago:
+    #Desde enero a junio, se cobra el 15 de julio
+    #Desde julio y noviembre, se cobra el 15 de diciembre
+    #Puede que a la persona le toque cobrar solo lo que trabajo despues de una fecha de pago, 
+    #o cobrar una gratificación completa si e
     if mes_f==12 or mes_i==12:
         mes_f = mes_f-1
         mes_i = mes_i-1
     a=0
-    if anio_i<anio_f:
+    if anio_i<anio_f:              
         if 1<=mes_f<=6 and 6<mes_i<=11:
             a = mes_f
         elif 1<=mes_f<=6 and 1<=mes_i<=6:
@@ -117,27 +124,30 @@ def CTS_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):     #para liquidacion
     return ctstrunca
 
 def i_5c(sueldom,bono_ord):     #para remuneracion neta
-    s = sueldom*12
-    grati = sueldom*2
-    bono = grati*0.09
-    proyeccion_1anio = s+grati+bono+bono_ord
-    renta_neta = proyeccion_1anio-30100      #se le resta 7UIT(UIT=4300soles)
-    #tasas de impuesto
-    i = renta_neta/4300
-    if i>0 and i<=5:
-        i_5c = (renta_neta*0.08)/12
-    elif i>5 and i<=20:
-        a = 21500
-        i_5c = (1720+(renta_neta-a)*0.14)/12
-    elif i>20 and i<=35:
-        a = 86000
-        i_5c = (10750+(renta_neta-a)*0.17)/12
-    elif i>35 and i<=45:
-        a = 150500
-        i_5c = (21715+(renta_neta-a)*0.2)/12
-    elif i>45:
-        a = 193500
-        i_5c = (30315+(renta_neta-a)*0.3)/12
+    if sueldom<2150:
+        i_5c=0
+    else:
+        s = sueldom*12
+        grati = sueldom*2
+        bono = grati*0.09
+        proyeccion_1anio = s+grati+bono+bono_ord
+        renta_neta = proyeccion_1anio-30100      #se le resta 7UIT(UIT=4300soles)
+        #tasas de impuesto
+        i = renta_neta/4300
+        if i>0 and i<=5:
+            i_5c = (renta_neta*0.08)/12
+        elif i>5 and i<=20:
+            a = 21500
+            i_5c = (1720+(renta_neta-a)*0.14)/12
+        elif i>20 and i<=35:
+            a = 86000
+            i_5c = (10750+(renta_neta-a)*0.17)/12
+        elif i>35 and i<=45:
+            a = 150500
+            i_5c = (21715+(renta_neta-a)*0.2)/12
+        elif i>45:
+            a = 193500
+            i_5c = (30315+(renta_neta-a)*0.3)/12
     
     return round(i_5c,2)
 
