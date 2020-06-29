@@ -8,6 +8,9 @@
 #anio_f = anio de salida
 
 def conteo_meses(iniciomes,finmes,inicioanio,finalanio):
+    #Se quiere determinar el numero de meses para los diferentes calculos en el programa
+    #Se evalua de acuerdo al año y los meses, además valida que tenga sentido, por ejemplo
+    #si es año final es menor al inicial, no tendría coherencia
     
     mes_i=iniciomes
     mes_f=finmes
@@ -15,20 +18,20 @@ def conteo_meses(iniciomes,finmes,inicioanio,finalanio):
     anio_f=finalanio
 
     #total num de meses
-    if mes_f>=mes_i:
-        if anio_f==anio_i:
+    if mes_f>=mes_i:                 #si el mes final es mayor, se tomara en cuenta los años para los calculos
+        if anio_f==anio_i:           #si los años son iguales
             m=(mes_f-mes_i)+1   
-        elif anio_f>anio_i:
+        elif anio_f>anio_i:          #si el año final es el mayor
             m=(12-mes_i+mes_f+1)+12*(anio_f-anio_i-1)
         else:
-            m=0
+            m=0                       #si el año inicial fuera mayor, el num de meses es 0 para validarlo mas adelante
     else:
-        if anio_f>anio_i:
+        if anio_f>anio_i:             #en caso de que el año final sea mayor
             m=(12-mes_i+mes_f+1)+12*(anio_f-anio_i-1)
         else:
-            m=0
-    return m
+            m=0                       #si el año y mes inicial fueran mayores, el num de meses es 0 para validarlo mas adelante
 
+    return m                          
 def grati(sueldom,m):   #para costo laboral
     g = (sueldom/6)*(m)
     return g
