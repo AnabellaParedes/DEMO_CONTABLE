@@ -13,8 +13,8 @@ class Aplicacion_1():
         #variables de control
         self.nombre = StringVar()
         self.SueldoMensual = DoubleVar(value=0) 
-        self.mes_inicio = IntVar()   #value=1
-        self.mes_salida = IntVar()   #value=2
+        self.mes_inicio = IntVar()   
+        self.mes_salida = IntVar()   
         self.anio_inicio = IntVar()
         self.anio_salida = IntVar()
         self.total = StringVar()
@@ -49,12 +49,12 @@ class Aplicacion_1():
         self.etiq9 = ttk.Label(self.LIQ, text="RESULTADOS")
         self.etiq10 = ttk.Label(self.LIQ, textvariable=self.total, foreground="yellow", background="black", borderwidth=5, relief="sunken", anchor="e")
 
-        #self.separ1 = ttk.Separator(self.LIQ, orient=HORIZONTAL)
-        
-        self.boton1 = ttk.Button(self.LIQ, text="Calcular", command=self.calcular1)  #
+       
+        #Botones a usar
+        self.boton1 = ttk.Button(self.LIQ, text="Calcular", command=self.calcular1) 
         #self.boton3 = ttk.Button(self.LIQ, text="Info")   #, command=self.Informacion
-        self.boton4 = ttk.Button(self.LIQ, text="Borrar", command = self.Borrar) #, command=self.Borrar
-        self.boton2 = ttk.Button(self.LIQ, text="Salir", command = self.LIQ.destroy)  #, command=self.NETO.destroy
+        self.boton4 = ttk.Button(self.LIQ, text="Borrar", command = self.Borrar)
+        self.boton2 = ttk.Button(self.LIQ, text="Salir", command = self.LIQ.destroy)  
 
 
 
@@ -81,16 +81,15 @@ class Aplicacion_1():
         self.etiq9.grid(row=14, column=0, columnspan=4, padx=10, pady=10)
         self.etiq10.grid(row=15, column=0, columnspan=3, rowspan=14, sticky=W+E+N+S, padx=5, pady=5, ipadx=10, ipady=20)
 
-        #self.separ1.grid(row=39, column=0, columnspan=2)
-        
-        #self.boton3.pack(side=LEFT, fill=BOTH, expand=True, padx=10, pady=10)
+       
         self.boton2.grid(row=45, column=1, padx=5, pady=5)
         self.boton4.grid(row=45, column=0, padx=5, pady=5)
+
         #ventana abierta
         self.LIQ.mainloop()
 
     def calcular1(self, *args):
-        #Función para validar datos y calcular el sueldo neto
+        #Función para validar datos y calcular la liquidacion neta
         error_dato = False
         total = 0
         try:
@@ -106,8 +105,8 @@ class Aplicacion_1():
             error_dato = True
 
         if not error_dato and sueldo>0:
-            #self.total.set("")
-            if meses==0:
+            
+            if meses==0:    #Esto corresponde a la validacion en la funcion de conteo de meses
                 self.total.set("Aun no hacemos viajes en el tiempo                                                                    ")
             else:
                 v = round(funciones4final.vaca(sueldo,meses),2)
