@@ -12,7 +12,7 @@ class Aplicacion_1():
 
         #variables de control
         self.nombre = StringVar()
-        self.SueldoMensual = DoubleVar() 
+        self.SueldoMensual = DoubleVar(value=0) 
         self.mes_inicio = IntVar()   #value=1
         self.mes_salida = IntVar()   #value=2
         self.anio_inicio = IntVar()
@@ -105,7 +105,7 @@ class Aplicacion_1():
         except:
             error_dato = True
 
-        if not error_dato:
+        if not error_dato and sueldo>0:
             #self.total.set("")
             if meses==0:
                 self.total.set("Aun no hacemos viajes en el tiempo                                                                    ")
@@ -118,8 +118,11 @@ class Aplicacion_1():
                 texto = f"Estimado Sr(a) {nombre} \nDe acuerdo a su fecha de ingreso y salida, su liquidacion es la siguiente: \n\tPago por Vacaciones de S/.{v} \n\tPago por Gratificacion de S/.{grati} \n\tPago por Bono ley de S/.{bono} \n\tPago por Compensacion por tiempo de trabajo CTS de S/.{cts} \nSu liquidacion es por el total de S/.{round(total,2)}"
                 self.total.set(texto)
         
+        elif sueldo==0:
+            self.total.set("Ingrese valores correspondientes--------------------------------------------------")
+
         else:
-            self.total.set("ERROR")
+            self.total.set("ERROR-----------------------------------------------------------------------------")
 
     def Borrar(self):
         self.nombre.set("")
