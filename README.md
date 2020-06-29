@@ -8,3 +8,4 @@ B.	Podrá calcular la liquidación de alguna persona si tiene un retiro imprevis
 
 C.	Podrá calcular el costo laboral de contratar a una persona, estará sujeto a una proyección de cuánto se invertirá dándole todos los beneficios correspondientes según el régimen general tomado por la empresa.  
 
+![ScreenShot](https://github.com/AnabellaParedes/DEMO_CONTABLE/master/INTERFACES.png)
