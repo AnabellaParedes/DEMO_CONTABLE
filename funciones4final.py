@@ -33,22 +33,32 @@ def bono(gratificacion):   #para costo y liquidacion
     bono = gratificacion*0.09
     return bono
 
-def grati_trunca(sueldom,mes_i,mes_f):   #para liquidacion
+def grati_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):   #para liquidacion
     if mes_f==12 or mes_i==12:
         mes_f = mes_f-1
         mes_i = mes_i-1
     a=0
-    if 1<=mes_f<=6 and 6<mes_i<=11:
-        a = mes_f
-    elif 1<=mes_i<=6 and 6<mes_f<=11:
-        a = (mes_f-7)+1
-    elif 1<=mes_f<=6 and 1<=mes_i<=6:
-        a = mes_f-mes_i+1
-    elif 6<=mes_f<=11 and 6<=mes_i<=11: 
-        a = mes_f-mes_i+1 
+    if anio_i<anio_f:
+        if 1<=mes_f<=6 and 6<mes_i<=11:
+            a = mes_f
+        elif 1<=mes_f<=6 and 1<=mes_i<=6:
+            a = mes_f
+        elif 6<=mes_f<=11 and 6<=mes_i<=11:
+            a = mes_f-6
+        elif 1<=mes_i<=6 and 6<mes_f<=11:
+            a = mes_f-6
+    elif anio_f==anio_i:
+        if 1<=mes_f<=6 and 1<=mes_i<=6:
+            a = mes_f-mes_i+1
+        elif 6<=mes_f<=11 and 6<=mes_i<=11: 
+            a = mes_f-mes_i+1 
+        elif 1<=mes_i<=6 and 6<mes_f<=11:
+            a = mes_f-6
+        elif 1<=mes_f<=6 and 6<mes_i<=11:
+            a = mes_f
 
     gratitrunca=(sueldom/6)*a
-    return gratitrunca   
+    return gratitrunca 
 
 def vaca(sueldom,m):    #para costo laboral y liquidacion
     vt = (sueldom/12)*(m)
