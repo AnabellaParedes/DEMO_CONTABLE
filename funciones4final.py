@@ -33,6 +33,8 @@ def conteo_meses(iniciomes,finmes,inicioanio,finalanio):
 
     return m                          
 def grati(sueldom,m):   #para costo laboral
+    #Calcula el total de grati completo por el tiempo que se le va a contratar
+    #Equivale a un sexto del sueldo mensual por lo meses que trabajará
     g = (sueldom/6)*(m)
     return g
 
