@@ -11,7 +11,7 @@ class Aplicacion():
 
         #variables de control
         self.nombre = StringVar()
-        self.SueldoMensual = IntVar() 
+        self.SueldoMensual = IntVar(value=0) 
         self.SistemaPensiones = StringVar()   #value = 'a'
         self.porcentaje = DoubleVar()
         self.total = StringVar()
@@ -98,7 +98,7 @@ class Aplicacion():
         except:
             error_dato = True
 
-        if not error_dato:
+        if not error_dato and sueldo>0:
             #if sueldo>2150:
             self.total.set("")
             if self.SistemaPensiones.get() == "a":
@@ -118,8 +118,11 @@ class Aplicacion():
                     texto = f"Estimado Sr(a) {nombre} \nDe acuerdo a su remuneracion neta, usted cuenta con los siguientes descuentos: \n\tDescuento por ONP de S/.{onp} \n\tDescuento por renta de 5ta categoria de S/.{quinta} \nSu Remuneracion neta mensual es {total}"
                     self.total.set(texto)
 
+        elif sueldo==0:
+            self.total.set("Ingrese valores correspondientes--------------------------------------------------")
+        
         else:
-            self.total.set("ERROR")
+            self.total.set("ERROR-----------------------------------------------------------------------------")
 
     def Informacion(self):
         messagebox.showinfo("Recuerde...", "<1> El valor de la tasa de la ONP es 13% \n<2> Si tiene un sueldo menor a 2150 no paga Impuesto de 5ta categoria \n<3> La tasa minima del AFP es 11%")
