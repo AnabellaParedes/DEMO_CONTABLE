@@ -111,7 +111,7 @@ class Aplicacion_2():
                 sueldo_total = sueldo*meses
                 essalud = funciones4final.ESSALUD(sueldo,meses)
                 total = v+grati+bono+cts+sueldo_total+essalud
-                texto = f"Estimado Sr(a) {nombre} \nComo empleador, el costo laboral por los {meses} meses es el siguiente: \n\tPago por Vacaciones de S/.{v} \n\tPago por Gratificacion de S/.{grati} \n\tPago por Bono ley de S/.{bono} \n\tPago por Compensacion por tiempo de trabajo CTS de S/.{cts} \n\tCosto por Sueldo por los {meses} meses es de S/.{sueldo_total} \n\tCosto por seguro social ESSALUD de S/.{essalud} \nEl costo es por el total de S/.{round(total,2)}"
+                texto = f"Estimado Sr(a) {nombre} \nComo empleador, el costo laboral por los {meses} meses es el siguiente: \n\tGasto por Vacaciones de S/.{v} \n\tGasto por Gratificacion de S/.{grati} \n\tGasto por Bono ley de S/.{bono} \n\tGasto por Compensacion por tiempo de trabajo CTS de S/.{cts} \n\tGasto por Sueldo por los {meses} meses es de S/.{sueldo_total} \n\tGasto por seguro social ESSALUD de S/.{essalud} \nEl costo laboral es de S/.{round(total,2)}"
                 self.total.set(texto)
         
         elif sueldo==0:
