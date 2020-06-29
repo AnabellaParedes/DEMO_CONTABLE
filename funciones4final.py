@@ -49,7 +49,7 @@ def grati_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):   #para liquidacion
     #Desde enero a junio, se cobra el 15 de julio
     #Desde julio y noviembre, se cobra el 15 de diciembre
     #Puede que a la persona le toque cobrar solo lo que trabajo despues de una fecha de pago, 
-    #o cobrar una gratificación completa si e
+    #o cobrar una gratificación completa
     if mes_f==12 or mes_i==12:     #se valida hasta el mes de noviembre
         mes_f = mes_f-1
         mes_i = mes_i-1
@@ -73,7 +73,7 @@ def grati_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):   #para liquidacion
         elif 1<=mes_f<=6 and 6<mes_i<=11:
             a = mes_f
 
-    gratitrunca=(sueldom/6)*a
+    gratitrunca=(sueldom/6)*a              #Corresponde a 1/6 del sueldo por los meses que faltan cobrar
     return gratitrunca 
 
 def vaca(sueldom,m):    #para costo laboral y liquidacion
@@ -90,10 +90,15 @@ def CTS(sueldom,m):        #para costo
     return cts
 
 def CTS_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):     #para liquidacion
-    #Corresponde 
+    #Corresponde al monto que le falta cobrar al empleado despues de su salida antes de tiempo
+    #Esta compensacion por tiempo de trabajo se pagan en estos dias:
+    #De noviembre a abril, el 15 de mayo
+    #De mayo a octubre, el 15 de noviembre
+    #Puede que a la persona le toque cobrar solo lo que trabajo despues de una fecha de pago, 
+    #o cobrar una cts completa
     b=0
-    if anio_i<anio_f:
-        if 1<=mes_f<=4 and 5<=mes_i<=10:    #if (11<=mes_f<=12 or 1<=mes_f<=4) and 5<=mes_i<=10:
+    if anio_i<anio_f:                            #si el año final es mayor
+        if 1<=mes_f<=4 and 5<=mes_i<=10:    
             b = mes_f+2
         elif 11<=mes_i<=12 and 1<=mes_f<=4:
             b = mes_f+2
@@ -112,8 +117,8 @@ def CTS_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):     #para liquidacion
         elif 1<=mes_i<=4 and 11<=mes_f<=12:
             b = mes_f-10
     
-    elif anio_f==anio_i:
-        if 1<=mes_f<=4 and 1<=mes_i<=4:
+    elif anio_f==anio_i:                          #Si sucede todo en un mismo año
+        if 1<=mes_f<=4 and 1<=mes_i<=4:           #los meses finales no pueden ser menores
             b = mes_f-mes_i+1
         elif 5<=mes_i<=10 and 5<=mes_f<=10:
             b = (mes_f-mes_i)+1
@@ -126,22 +131,22 @@ def CTS_trunca(sueldom,mes_i,mes_f,anio_i,anio_f):     #para liquidacion
         elif 1<=mes_i<=4 and 11<=mes_f<=12:
             b = mes_f-10
     
-    ctstrunca = ((sueldom+(sueldom+sueldom*0.09)/6)/12)*b
-    return ctstrunca
+    ctstrunca = ((sueldom+(sueldom+sueldom*0.09)/6)/12)*b    #Corresponde a un sueldo mas 1/6 de la grati, entre 12
+    return ctstrunca                                         #Por los meses que faltan cobrar
 
 def i_5c(sueldom,bono_ord):     #para remuneracion neta
-    if sueldom<2150:
+    if sueldom<2150:       #Cuando el sueldo sea menor a 2150, no existe impuesto de 5ta
         i_5c=0
-    else:
-        s = sueldom*12
-        grati = sueldom*2
-        bono = grati*0.09
-        proyeccion_1anio = s+grati+bono+bono_ord
+    else:                              #Se realiza una proyeccion anual
+        s = sueldom*12                 #Se calcula el sueldo en una año (por 12)
+        grati = sueldom*2              #En el año se ganan dos gratis
+        bono = grati*0.09              #El bono es el 9% de la grati
+        proyeccion_1anio = s+grati+bono+bono_ord             
         renta_neta = proyeccion_1anio-30100      #se le resta 7UIT(UIT=4300soles)
         #tasas de impuesto
         i = renta_neta/4300
-        if i>0 and i<=5:
-            i_5c = (renta_neta*0.08)/12
+        if i>0 and i<=5:                        #Existen distintas categorias para pagar un %
+            i_5c = (renta_neta*0.08)/12         #mientras se suba de categoria, se acumula el gasto hasta el nivel que llegues
         elif i>5 and i<=20:
             a = 21500
             i_5c = (1720+(renta_neta-a)*0.14)/12
@@ -159,10 +164,11 @@ def i_5c(sueldom,bono_ord):     #para remuneracion neta
 
 def AFP(sueldom,porc):
     porc = porc/100
-    AFP = sueldom*porc
+    AFP = sueldom*porc            #Se paga un impuesto por AFP
     return AFP
 
 def ESSALUD(sueldom,m):       #para costo laboral
+    #El seguro social corresponde al 9% del sueldo
     porc_estado = 0.09
-    essalud = (sueldom*m)*porc_estado
+    essalud = (sueldom*m)*porc_estado 
     return essalud
