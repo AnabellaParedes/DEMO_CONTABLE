@@ -19,7 +19,7 @@ class Aplicacion():
         # Define trazas con variables de control de los widgets Entry()
         # para detectar cambios en los datos. Si se producen cambios
         # se llama a la función 'self.calcular' para validación y para
-        # calcular importe a pagar
+        # calcular importe a cobrar
         
         # Llama a función para validar y calcular
         
@@ -51,9 +51,9 @@ class Aplicacion():
         
         #botones a utilizar
         self.boton1 = ttk.Button(self.NETO, text="Calcular", command=self.calcular)
-        self.boton3 = ttk.Button(self.NETO, text="Info", command=self.Informacion)
+        self.boton3 = ttk.Button(self.NETO, text="Info", command=self.Informacion)     #te otorgara algunos datos
         self.boton4 = ttk.Button(self.NETO, text="Borrar", command=self.Borrar)
-        self.boton2 = ttk.Button(self.NETO, text="Salir", command=self.NETO.destroy)
+        self.boton2 = ttk.Button(self.NETO, text="Salir", command=self.NETO.destroy)   #.destroy cierra la ventana
         
 
         #anadiendo y posicionando todas las etiquetas y cajas de textos que se utilicen
@@ -93,8 +93,8 @@ class Aplicacion():
             nombre = str(self.nombre.get())
             sueldo = float(self.SueldoMensual.get())
             porcentaje = float(self.porcentaje.get())
-            AFP = funciones4final.AFP(sueldo,porcentaje)
-            quinta = funciones4final.i_5c(sueldo,0)
+            AFP = round(funciones4final.AFP(sueldo,porcentaje),2)
+            quinta = round(funciones4final.i_5c(sueldo,0),2)
             
         except:
             error_dato = True

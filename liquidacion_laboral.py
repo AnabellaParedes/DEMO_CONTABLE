@@ -18,6 +18,11 @@ class Aplicacion_1():
         self.anio_inicio = IntVar()
         self.anio_salida = IntVar()
         self.total = StringVar()
+        
+        # Define trazas con variables de control de los widgets Entry()
+        # para detectar cambios en los datos. Si se producen cambios
+        # se llama a la función 'self.calcular' para validación y para
+        # calcular importe a liquidar
 
         # Llama a función para validar y calcular
         
@@ -54,7 +59,7 @@ class Aplicacion_1():
         self.boton1 = ttk.Button(self.LIQ, text="Calcular", command=self.calcular1) 
         #self.boton3 = ttk.Button(self.LIQ, text="Info")   #, command=self.Informacion
         self.boton4 = ttk.Button(self.LIQ, text="Borrar", command = self.Borrar)
-        self.boton2 = ttk.Button(self.LIQ, text="Salir", command = self.LIQ.destroy)  
+        self.boton2 = ttk.Button(self.LIQ, text="Salir", command = self.LIQ.destroy)   #.destroy cierra la ventana 
 
 
 
