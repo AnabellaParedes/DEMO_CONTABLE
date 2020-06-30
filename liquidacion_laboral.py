@@ -122,7 +122,7 @@ class Aplicacion_1():
                 texto = f"Estimado Sr(a) {nombre} \nDe acuerdo a su fecha de ingreso y salida, su liquidacion es la siguiente: \n\tPago por Vacaciones de S/.{v} \n\tPago por Gratificacion de S/.{grati} \n\tPago por Bono ley de S/.{bono} \n\tPago por Compensacion por tiempo de trabajo CTS de S/.{cts} \nSu liquidacion es por el total de S/.{round(total,2)}"
                 self.total.set(texto)
         
-        elif sueldo==0:
+        elif sueldo==0 or nombre=="":
             self.total.set("Ingrese valores correspondientes--------------------------------------------------")
 
         else:
@@ -135,6 +135,7 @@ class Aplicacion_1():
         self.anio_salida.set("")
         self.mes_inicio.set(value = 1)
         self.mes_salida.set(value = 1) 
+        self.total.set("")
 
 def main():
     Aplicacion_1()

@@ -25,9 +25,5 @@ b = ttk.Button(derived, text="LIQUIDACION", command=b2).place(x=200,y=100)
 c = ttk.Button(derived, text="COSTO LABORAL", command=b3).place(x=320,y=100)
 d = ttk.Button(derived, text = "SALIR", command = derived.destroy).place(x=200,y=160)
 
-#a.pack(side=TOP, fill=X, padx=10, pady=10)
-#b.pack(side=TOP, fill=X,padx=10, pady=10)
-#c.pack(side=TOP, fill=X, padx=10, pady=10)
-#d.pack(side=RIGHT, fill = X, padx = 20, pady =20)
 
 derived.mainloop()  

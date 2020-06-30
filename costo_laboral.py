@@ -129,7 +129,8 @@ class Aplicacion_2():
         self.anio_inicio.set("")
         self.anio_salida.set("")
         self.mes_inicio.set(value = 1)
-        self.mes_salida.set(value = 1) 
+        self.mes_salida.set(value = 1)
+        self.total.set("Ingrese valores correspondientes--------------------------------------------------")
 
 def main():
     Aplicacion_2()
