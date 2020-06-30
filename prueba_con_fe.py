@@ -4,23 +4,30 @@ import liquidacion_laboral
 from tkinter import *
 import funciones4final
 from tkinter import ttk
+import os
 
-#sueldo = sueldo_neto.Aplicacion()
-#liqui = liquidacion_laboral.Aplicacion_1()
-#costo = costo_laboral.Aplicacion_2()
 
 derived = Tk()
 derived.title("DEMO TRIBUTARIO")
-derived.geometry("490x300")
+derived.geometry("490x250")
+derived.config(bg="light grey")
 
+def b1():
+    os.system('sueldo_neto.py')
+def b2():
+    os.system('liquidacion_laboral.py')
+def b3():
+    os.system('costo_laboral.py')
+    
+etiq0 = ttk.Label(derived, text="DEMO CONTABLE", anchor="center", font = 'Helvetica 25 bold').place(x=108,y=40)
+a = ttk.Button(derived, text="SUELDO NETO", command=b1).place(x=80,y=100)
+b = ttk.Button(derived, text="LIQUIDACION", command=b2).place(x=200,y=100)
+c = ttk.Button(derived, text="COSTO LABORAL", command=b3).place(x=320,y=100)
+d = ttk.Button(derived, text = "SALIR", command = derived.destroy).place(x=200,y=160)
 
-
-a = ttk.Button(derived, text="SUELDO NETO", command=sueldo_neto.Aplicacion)
-b = ttk.Button(derived, text="LIQUIDACION", command=liquidacion_laboral.Aplicacion_1)
-c = ttk.Button(derived, text="COSTO LABORAL", command=costo_laboral.Aplicacion_2)
-
-a.pack(side=LEFT, fill=X, expand=True, padx=10, pady=10)
-b.pack(side=RIGHT, fill=X, expand=True, padx=10, pady=10)
-c.pack(side=RIGHT, fill=X, expand=True, padx=10, pady=10)
+#a.pack(side=TOP, fill=X, padx=10, pady=10)
+#b.pack(side=TOP, fill=X,padx=10, pady=10)
+#c.pack(side=TOP, fill=X, padx=10, pady=10)
+#d.pack(side=RIGHT, fill = X, padx = 20, pady =20)
 
 derived.mainloop()  
