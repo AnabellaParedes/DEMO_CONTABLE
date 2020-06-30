@@ -19,6 +19,11 @@ class Aplicacion_2():
         self.anio_salida = IntVar()
         self.total = StringVar()
 
+        # Define trazas con variables de control de los widgets Entry()
+        # para detectar cambios en los datos. Si se producen cambios
+        # se llama a la función 'self.calcular' para validación y para
+        # calcular importe de costo laboral
+
         # Llama a función para validar y calcular
         
         self.calcular2()
@@ -47,10 +52,9 @@ class Aplicacion_2():
         self.etiq10 = ttk.Label(self.C, textvariable=self.total, foreground="yellow", background="black", borderwidth=5, relief="sunken", anchor="e")
 
         #Botones a usar
-        self.boton1 = ttk.Button(self.C, text="Calcular", command=self.calcular2)  #
-        #self.boton3 = ttk.Button(self.LIQ, text="Info")   #, command=self.Informacion
-        self.boton4 = ttk.Button(self.C, text="Borrar", command=self.Borrar) #
-        self.boton2 = ttk.Button(self.C, text="Salir", command = self.C.destroy)  #
+        self.boton1 = ttk.Button(self.C, text="Calcular", command=self.calcular2)
+        self.boton4 = ttk.Button(self.C, text="Borrar", command=self.Borrar) 
+        self.boton2 = ttk.Button(self.C, text="Salir", command = self.C.destroy)  #.destry cierra la ventana
 
 
         self.etiq0.grid(row=1, column=0, columnspan=2, rowspan=2, sticky=W+E+N+S, padx=2, pady=2)
