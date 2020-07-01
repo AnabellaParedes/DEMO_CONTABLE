@@ -8,6 +8,7 @@ class Aplicacion():
         self.NETO = Tk()
         self.NETO.title("REMUNERACION NETA")
         self.NETO.geometry("490x650")
+        self.NETO.resizable(0,0)
 
         #variables de control
         self.nombre = StringVar()
@@ -99,7 +100,7 @@ class Aplicacion():
         except:
             error_dato = True
 
-        if not error_dato and sueldo>0:
+        if not error_dato and sueldo>0 and nombre!="":
             if self.SistemaPensiones.get() == "a":     #Si es que elige AFP
                 if porcentaje<11:                      #Validar tasa minima
                     self.total.set("RECORDAR. La tasa minima para el AFP es 11%")
@@ -117,7 +118,7 @@ class Aplicacion():
                     texto = f"Estimado Sr(a) {nombre} \nDe acuerdo a su remuneracion neta, usted cuenta con los siguientes descuentos: \n\tDescuento por ONP de S/.{onp} \n\tDescuento por renta de 5ta categoria de S/.{quinta} \nSu Remuneracion neta mensual es {total}"
                     self.total.set(texto)
 
-        elif sueldo==0:
+        elif sueldo==0 or nombre=="":
             self.total.set("Ingrese valores correspondientes--------------------------------------------------")
         
         else:

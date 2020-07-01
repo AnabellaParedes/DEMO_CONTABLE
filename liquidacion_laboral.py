@@ -109,7 +109,7 @@ class Aplicacion_1():
         except:
             error_dato = True
 
-        if not error_dato and sueldo>0:
+        if not error_dato and sueldo>0 and nombre!="":
             
             if meses==0:    #Esto corresponde a la validacion en la funcion de conteo de meses
                 self.total.set("Aun no hacemos viajes en el tiempo                                                                    ")
@@ -135,7 +135,7 @@ class Aplicacion_1():
         self.anio_salida.set("")
         self.mes_inicio.set(value = 1)
         self.mes_salida.set(value = 1) 
-        self.total.set("")
+        self.total.set("Ingrese valores correspondientes--------------------------------------------------")
 
 def main():
     Aplicacion_1()
