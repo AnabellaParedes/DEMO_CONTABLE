@@ -103,7 +103,7 @@ class Aplicacion_2():
         except:
             error_dato = True
         
-        if not error_dato and sueldo>0:
+        if not error_dato and sueldo>0 and nombre!="":
             
             if meses==0:
                 self.total.set("Aun no hacemos viajes en el tiempo                                                                    ")
@@ -118,7 +118,7 @@ class Aplicacion_2():
                 texto = f"Estimado Sr(a) {nombre} \nComo empleador, el costo laboral por los {meses} meses es el siguiente: \n\tGasto por Vacaciones de S/.{v} \n\tGasto por Gratificacion de S/.{grati} \n\tGasto por Bono ley de S/.{bono} \n\tGasto por Compensacion por tiempo de trabajo CTS de S/.{cts} \n\tGasto por Sueldo por los {meses} meses es de S/.{sueldo_total} \n\tGasto por seguro social ESSALUD de S/.{essalud} \nEl costo laboral es de S/.{round(total,2)}"
                 self.total.set(texto)
         
-        elif sueldo==0:
+        elif sueldo==0 or nombre=="":
             self.total.set("Ingrese valores correspondientes--------------------------------------------------")
         else:
             self.total.set("ERROR-----------------------------------------------------------------------------")
